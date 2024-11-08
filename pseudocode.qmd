@@ -290,7 +290,35 @@ run_craps_simulation <- function(N) {
 
 ## Planning for implementation
 
-What parts are still missing for you to write code implementing craps based on your pseudocode? 
-What do you expect you will need to do before/during the coding process?
-Make a plan for next week's work. Where will you start?
+### What parts are still missing for you to write code implementing craps based on your pseudocode?
+
+- Double-check edge cases and special scenarios to ensure the functions handle all possible game states.
+- Validate input and output formats for robustness.
+
+### What do you expect you will need to do before/during the coding process?
+
+- We may need to debug and adjust as you integrate the functions together, especially to ensure data integrity across multiple rolls and games.
+- Prepare for performance optimization if simulating a large number of games.
+
+### Plan for Next Week's Work
+
+1. **Review and Refine Pseudocode**  
+   Ensure logical consistency and add comments for clarity.
+
+2. **Unit Testing for Individual Functions**  
+   Validate the correct behavior of each function (e.g., `eval_first_roll()`, `roll_dice()`).
+
+3. **Integrate Functions into the Main Game Simulation**  
+   Run test cases to confirm that the integrated functions work together correctly.
+
+4. **Run Larger Simulations**  
+   - Summarize data.
+   - Optimize for performance.
+   - Document the process thoroughly.
+
+
+
+
+
+
 
