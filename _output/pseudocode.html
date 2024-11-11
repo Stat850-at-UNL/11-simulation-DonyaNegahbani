@@ -151,10 +151,9 @@ function playAgain():
 <section id="sec-flowchart" class="level2">
 <h2 class="anchored" data-anchor-id="sec-flowchart">Flowchart</h2>
 <p>Create a flowchart illustrating how the game unfolds, using the function names provided in the ChatGPT code. Include this as a PNG file in the repository and link to it here.</p>
-<!-- Your image should go here. Use markdown syntax to add the image and give it a useful caption -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figure\Flowchart.jpg" class="img-fluid figure-img"></p>
+<p><img src="figure\Craps_Game_Flowchart_Old.png" class="img-fluid figure-img"></p>
 <figcaption>Flowchart of Craps Game</figcaption>
 </figure>
 </div>
@@ -163,13 +162,155 @@ function playAgain():
 <h2 class="anchored" data-anchor-id="sec-single-game-data">Single game data structure</h2>
 <p>It’s one thing to write a set of instructions/pseudocode for how to <em>play</em> a game, but it’s a separate task to figure out how to <strong>computationally simulate</strong> the game. For instance, in a simulation you often need to keep track of each move, and then compute summary statistics about the game to use when compiling simulation data.</p>
 <p>Draw/sketch a tabular data structure that can store the results as you progress through a single game of craps. Keep track of how many times you’ve rolled the dice. What additional columns do you need? Hint: Each roll of the 2 dice should be a row.</p>
-<!-- Here you should include either a picture of your sketch or a markdown table -->
+<p>This table tracks each roll during a game, storing relevant data for each roll.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Roll Number</th>
+<th>Die 1</th>
+<th>Die 2</th>
+<th>Total</th>
+<th>Roll Type</th>
+<th>Point Value</th>
+<th>Game Status</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>7</td>
+<td>Come-Out Roll</td>
+<td>N/A</td>
+<td>In Progress</td>
+<td>Win/Lose/Continue</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>5</td>
+<td>2</td>
+<td>7</td>
+<td>Point Roll</td>
+<td>5</td>
+<td>In Progress</td>
+<td>Win/Lose/Continue</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>1</td>
+<td>6</td>
+<td>7</td>
+<td>Point Roll</td>
+<td>5</td>
+<td>Ended</td>
+<td>Lose</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Roll Number</strong>: Tracks the number of rolls in the game session.</li>
+<li><strong>Die 1</strong>: The result of the first die.</li>
+<li><strong>Die 2</strong>: The result of the second die.</li>
+<li><strong>Total</strong>: The sum of Die 1 and Die 2.</li>
+<li><strong>Roll Type</strong>: Indicates whether the roll is a “Come-Out Roll” or a “Point Roll”.</li>
+<li><strong>Point Value</strong>: Records the point value set during the game, if applicable.</li>
+<li><strong>Game Status</strong>: Tracks if the game is “In Progress” or “Ended”.</li>
+<li><strong>Outcome</strong>: Indicates the result of that particular roll, such as “Win”, “Lose”, or “Continue”</li>
+</ul>
 </section>
 <section id="sec-game-summary-data" class="level2">
 <h2 class="anchored" data-anchor-id="sec-game-summary-data">Summary data structure</h2>
 <p>Draw/sketch a summary tabular data structure to store summary information from a single game of craps.<br>
 Hint: Each game of craps should yield a single row in your table.</p>
-<!-- Here you should include either a picture of your sketch or a markdown table -->
+<p>This table summarizes the entire game with key statistics.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Game ID</th>
+<th>Total Rolls</th>
+<th>Outcome</th>
+<th>Total Wins</th>
+<th>Total Losses</th>
+<th>Point Value</th>
+<th>Number of Come-Out Rolls</th>
+<th>Number of Point Rolls</th>
+<th>Total Dice Sum</th>
+<th>Duration (Time)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>4</td>
+<td>Lose</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+<td>1</td>
+<td>3</td>
+<td>22</td>
+<td>3 minutes</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>6</td>
+<td>Win</td>
+<td>1</td>
+<td>0</td>
+<td>8</td>
+<td>1</td>
+<td>5</td>
+<td>35</td>
+<td>5 minutes</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>2</td>
+<td>Lose</td>
+<td>0</td>
+<td>1</td>
+<td>N/A</td>
+<td>1</td>
+<td>0</td>
+<td>9</td>
+<td>1 minute</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="sec-simulation-pseudocode" class="level1">
@@ -239,6 +380,12 @@ eval_point_roll &lt;- function(point, roll) {
 <h2 class="anchored" data-anchor-id="sec-main-function-diagram">Planning Main Functions</h2>
 <p>Update your flowchart from <a href="#sec-flowchart" class="quarto-xref">Section&nbsp;2.1</a> to match the requirements of this section. Your flowchart should have separate blocks for each function. Which helper function(s) will be called inside each required function?</p>
 <!-- Include a picture here using markdown image format. Save the picture in your repository and remember to commit it! -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figure\Flowchart.jpg" class="img-fluid figure-img"></p>
+<figcaption>Flowchart of Craps Game</figcaption>
+</figure>
+</div>
 </section>
 <section id="sec-game-pseudocode" class="level2">
 <h2 class="anchored" data-anchor-id="sec-game-pseudocode">Simulating a full game</h2>

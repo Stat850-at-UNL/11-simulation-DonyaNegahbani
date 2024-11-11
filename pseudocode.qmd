@@ -97,9 +97,8 @@ function playAgain():
 Create a flowchart illustrating how the game unfolds, using the function names provided in the ChatGPT code. 
 Include this as a PNG file in the repository and link to it here.
 
-<!-- Your image should go here. Use markdown syntax to add the image and give it a useful caption -->
-![Flowchart of Craps Game](figure\Flowchart.jpg)
 
+![Flowchart of Craps Game](figure\Craps_Game_Flowchart_Old.png)
 
 ## Single game data structure {#sec-single-game-data}
 
@@ -110,14 +109,39 @@ Draw/sketch a tabular data structure that can store the results as you progress 
 What additional columns do you need? 
 Hint: Each roll of the 2 dice should be a row.
 
-<!-- Here you should include either a picture of your sketch or a markdown table -->
+
+This table tracks each roll during a game, storing relevant data for each roll.
+
+
+| Roll Number | Die 1 | Die 2 | Total | Roll Type        | Point Value | Game Status | Outcome       |
+|-------------|-------|-------|-------|------------------|-------------|-------------|---------------|
+| 1           | 3     | 4     | 7     | Come-Out Roll    | N/A         | In Progress | Win/Lose/Continue |
+| 2           | 5     | 2     | 7     | Point Roll       | 5           | In Progress | Win/Lose/Continue |
+| 3           | 1     | 6     | 7     | Point Roll       | 5           | Ended       | Lose          |
+| ...         | ...   | ...   | ...   | ...              | ...         | ...         | ...           |
+
+- **Roll Number**: Tracks the number of rolls in the game session.
+- **Die 1**: The result of the first die.
+- **Die 2**: The result of the second die.
+- **Total**: The sum of Die 1 and Die 2.
+- **Roll Type**: Indicates whether the roll is a "Come-Out Roll" or a "Point Roll".
+- **Point Value**: Records the point value set during the game, if applicable.
+- **Game Status**: Tracks if the game is "In Progress" or "Ended".
+- **Outcome**: Indicates the result of that particular roll, such as "Win", "Lose", or "Continue"
 
 ## Summary data structure {#sec-game-summary-data}
 
 Draw/sketch a summary tabular data structure to store summary information from a single game of craps.    
 Hint: Each game of craps should yield a single row in your table.
 
-<!-- Here you should include either a picture of your sketch or a markdown table -->
+
+This table summarizes the entire game with key statistics.
+
+| Game ID | Total Rolls | Outcome     | Total Wins | Total Losses | Point Value | Number of Come-Out Rolls | Number of Point Rolls | Total Dice Sum | Duration (Time) |
+|---------|-------------|-------------|------------|--------------|-------------|-------------------------|----------------------|----------------|-----------------|
+| 1       | 4           | Lose        | 0          | 1            | 5           | 1                       | 3                    | 22             | 3 minutes       |
+| 2       | 6           | Win         | 1          | 0            | 8           | 1                       | 5                    | 35             | 5 minutes       |
+| 3       | 2           | Lose        | 0          | 1            | N/A         | 1                       | 0                    | 9              | 1 minute        |
 
 
 # Simulating a game of craps {#sec-simulation-pseudocode}
@@ -202,6 +226,7 @@ Your flowchart should have separate blocks for each function.
 Which helper function(s) will be called inside each required function?
 
 <!-- Include a picture here using markdown image format. Save the picture in your repository and remember to commit it! -->
+![Flowchart of Craps Game](figure\Flowchart.jpg)
 
 ## Simulating a full game {#sec-game-pseudocode}
 
