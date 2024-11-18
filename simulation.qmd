@@ -1,0 +1,109 @@
+---
+title: "Craps Simulation Analysis"
+format: html
+---
+#Craps Game Simulation and Analysis
+This document uses functions created for simulating games of craps and performs various analyses to derive insights related to game probabilities and distributions.
+
+##Setting Up the Simulation
+```{r}
+# Load required libraries
+library(dplyr)
+library(ggplot2)
+# Source the craps functions defined previously
+source("craps-code.R")  
+# Set the number of simulations
+set.seed(123)  # For reproducibility
+num_simulations <- 10000  # Number of games to simulate
+
+# Run the simulations using the `run_craps_simulation` function
+simulation_results <- run_craps_simulation(num_simulations)
+
+```
+
+#1. Probability of Winning After Entering the Point-Roll Phase
+
+##Problem Statement
+
+Determine the probability that a player wins a game of craps after entering the point-roll phase.
+
+##Analysis and Code
+```{r}
+# Filter games that reached the point-roll phase
+point_phase_games <- simulation_results %>%
+  filter(!is.na(point))  # Only include games with a valid point set
+
+# Calculate total games and wins in the point-roll phase
+total_point_games <- nrow(point_phase_games)
+total_point_wins <- sum(point_phase_games$outcome == "win")
+
+# Calculate the probability of winning after entering the point phase
+probability_win_point_phase <- total_point_wins / total_point_games
+probability_win_point_phase
+
+```
+
+##Result Interpretation
+The computed probability represents the likelihood that a player wins a game of craps once they enter the point-roll phase.
+
+#2. Distribution of Game Outcomes
+
+##Problem Statement
+
+Visualize the distribution of game outcomes (wins and losses) across all simulated games.
+
+##Analysis and Code
+```{r}
+# Visualize the distribution of game outcomes
+ggplot(simulation_results, aes(x = outcome)) +
+  geom_bar(fill = "steelblue") +
+  labs(
+    title = "Distribution of Game Outcomes",
+    x = "Outcome",
+    y = "Count"
+  ) +
+  theme_minimal()
+
+```
+##Result Interpretation
+
+The bar plot shows the frequency of wins and losses across all simulated games, providing insight into the balance of the game.
+
+#3. Average Number of Rolls per Game
+
+##Problem Statement
+
+Calculate the average number of rolls per game in the craps simulation.
+
+##Analysis and Code
+
+```{r}
+# Calculate average number of rolls per game
+average_rolls <- mean(simulation_results$n_rolls)
+average_rolls
+
+```
+
+##Result Interpretation
+The average number of rolls gives insight into the typical length of a craps game in terms of dice rolls.
+
+#4. Distribution of Rolls per Game
+
+##Problem Statement
+Visualize the distribution of the number of rolls per game.
+
+```{r}
+# Histogram of the number of rolls per game
+ggplot(simulation_results, aes(x = n_rolls)) +
+  geom_histogram(binwidth = 1, fill = "lightblue", color = "black") +
+  labs(
+    title = "Distribution of Number of Rolls per Game",
+    x = "Number of Rolls",
+    y = "Count"
+  ) +
+  theme_minimal()
+
+```
+
+##Result Interpretation
+The histogram shows how frequently games of different lengths (in terms of number of rolls) occur, providing a sense of variability in game length.
